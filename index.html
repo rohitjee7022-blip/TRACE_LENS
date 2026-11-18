@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090611">
+  <meta name="description" content="TRACE LENS documentation drift dashboard demo">
+  <title>TRACE LENS — Repository overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-lens" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5M8 11h5M10.5 8.5v5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-git-pull" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v12m12-6V9a6 6 0 0 0-6-6h-1m0 0 3-3m-3 3 3 3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22z"/><path d="M4 5v17m5-15h7m-7 4h7"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-7 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3m8 0h3a1 1 0 0 1 1 1v3m0 8v3a1 1 0 0 1-1 1h-3m-8 0H5a1 1 0 0 1-1-1v-3M4 12h16"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4m0 4h.01"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6m-12 5h8m-8 4h8"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6m-11 5L21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 7h16M7 12h10m-7 5h4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z"/><path d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14Z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+  </svg>
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="TRACE LENS home">
+      <span class="brand-mark"><svg class="icon"><use href="#i-lens"/></svg></span>
+      <span class="brand-name">TRACE<span>LENS</span></span>
+    </a>
+    <span class="topbar-divider"></span>
+    <div class="repo-picker-wrap">
+      <button class="repo-picker" id="repoPicker" aria-expanded="false" aria-haspopup="listbox">
+        <span class="repo-mini-icon">⌘</span>
+        <span id="currentRepo">trace-lens/<strong>demo-project</strong></span>
+        <svg class="icon tiny"><use href="#i-chevron"/></svg>
+      </button>
+      <div class="repo-menu" id="repoMenu" role="listbox" aria-label="Choose a demo repository" hidden>
+        <div class="menu-eyebrow">DEMO REPOSITORIES</div>
+        <button role="option" data-repo="trace-lens/demo-project" aria-selected="true"><span class="repo-dot"></span>trace-lens/demo-project<span class="selected-mark">✓</span></button>
+        <button role="option" data-repo="acme/payments-api"><span class="repo-dot blue"></span>acme/payments-api</button>
+        <button role="option" data-repo="northstar/platform"><span class="repo-dot pink"></span>northstar/platform</button>
+        <div class="menu-foot">Sample data · not connected to GitHub</div>
+      </div>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a class="nav-link active" href="#overview"><svg class="icon"><use href="#i-grid"/></svg>Overview</a>
+      <a class="nav-link" href="#pull-requests"><svg class="icon"><use href="#i-git-pull"/></svg>Pull requests</a>
+      <a class="nav-link" href="#drift-details"><svg class="icon"><use href="#i-book"/></svg>Documentation</a>
+      <a class="nav-link" href="#history"><svg class="icon"><use href="#i-history"/></svg>History</a>
+    </nav>
+    <div class="topbar-right">
+      <div class="connection"><span class="connection-dot"></span><span>GitHub <b>demo</b></span></div>
+      <span class="topbar-divider slim"></span>
+      <div class="last-scan"><span>LAST SCAN</span><strong id="lastScanTime">Today, 10:42 AM</strong></div>
+      <button class="avatar" aria-label="Demo profile">TL</button>
+    </div>
+  </header>
+
+  <main class="app-shell" id="overview">
+    <div class="page-heading">
+      <div>
+        <div class="breadcrumb"><span>WORKSPACE</span><svg class="icon tiny"><use href="#i-chevron-right"/></svg><span>REPOSITORY OVERVIEW</span></div>
+        <div class="heading-row">
+          <div>
+            <h1>Repository overview</h1>
+            <p class="page-subtitle">A clear view of where your docs drift from your code.</p>
+          </div>
+          <span class="demo-pill"><span></span> DEMO DATA</span>
+        </div>
+      </div>
+      <div class="heading-actions">
+        <span class="scan-label"><span class="scan-pulse"></span>Demo environment</span>
+        <button class="button button-primary" id="scanButton"><svg class="icon"><use href="#i-scan"/></svg><span>Run demo scan</span></button>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <aside class="metrics-column" aria-label="Repository metrics">
+        <div class="section-kicker"><span>REPOSITORY HEALTH</span><span class="kicker-line"></span><span class="muted-mono">7D</span></div>
+        <article class="metric-card health-card">
+          <div class="metric-top"><span class="metric-icon purple"><svg class="icon"><use href="#i-spark"/></svg></span><span class="metric-label">Documentation health</span><button class="info-button" title="Based on documentation coverage and detected drift">i</button></div>
+          <div class="health-value"><strong>86</strong><span>/ 100</span><span class="quality-badge">GOOD</span></div>
+          <div class="health-track"><span style="width:86%"></span></div>
+          <div class="metric-foot"><span>Above your 80-point target</span><span class="trend positive"><svg class="icon tiny"><use href="#i-arrow-up"/></svg> 4.2%</span></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span class="metric-icon amber"><svg class="icon"><use href="#i-alert"/></svg></span><span class="metric-label">Documentation drift</span><span class="mini-status warning">REVIEW</span></div>
+          <div class="metric-value"><strong>07</strong><span class="metric-context">open findings</span></div>
+          <div class="metric-foot"><span>Issues requiring review</span><span class="metric-foot-icon amber-text">↗</span></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span class="metric-icon violet"><svg class="icon"><use href="#i-book"/></svg></span><span class="metric-label">Active documentation rules</span></div>
+          <div class="metric-value"><strong>18</strong><span class="metric-context">enabled</span></div>
+          <div class="metric-foot"><span>Applied across repository</span><span class="metric-foot-icon">→</span></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span class="metric-icon blue"><svg class="icon"><use href="#i-check"/></svg></span><span class="metric-label">Statements checked</span></div>
+          <div class="metric-value"><strong>142</strong><span class="metric-context">statements</span></div>
+          <div class="metric-foot"><span>Last 7 days</span><span class="tiny-bars" aria-label="Activity rising"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span class="metric-icon red"><svg class="icon"><use href="#i-git-pull"/></svg></span><span class="metric-label">Pull requests blocked</span></div>
+          <div class="metric-value"><strong>03</strong><span class="metric-context">this week</span></div>
+          <div class="metric-foot"><span>Potential documentation mismatches</span><span class="metric-foot-icon red-text">!</span></div>
+        </article>
+        <div class="rules-note"><span class="rules-note-icon"><svg class="icon tiny"><use href="#i-spark"/></svg></span><span><b>18 rules in play</b><br>Covering API values, config &amp; setup guides</span><svg class="icon tiny rules-arrow"><use href="#i-chevron-right"/></svg></div>
+      </aside>
+
+      <section class="main-column" aria-label="Repository analysis">
+        <section class="panel repo-activity">
+          <div class="repo-identity">
+            <span class="github-tile"><svg class="icon"><use href="#i-github"/></svg></span>
+            <div><div class="repo-title-row"><h2 id="activityRepo">demo-project</h2><span class="private-tag">PRIVATE</span></div><p>trace-lens / <span>Documentation drift monitoring</span></p></div>
+          </div>
+          <div class="repo-health">
+            <span class="activity-dot"></span><span>Demo repository</span><span class="repo-meta-divider"></span><svg class="icon tiny"><use href="#i-clock"/></svg><span>Scanned <b id="activityScanTime">today at 10:42 AM</b></span>
+          </div>
+          <div class="repo-stats">
+            <div class="repo-stat"><span class="stat-caption">OPEN FINDINGS</span><strong class="amber-text">07</strong><span>across 4 PRs</span></div>
+            <div class="repo-stat"><span class="stat-caption">DOCS COVERAGE</span><strong>82<span class="stat-unit">%</span></strong><span>of changed code</span></div>
+            <div class="repo-stat"><span class="stat-caption">RULES ACTIVE</span><strong>18</strong><span>4 categories</span></div>
+            <div class="repo-stat activity-spark-stat"><span class="stat-caption">SCAN ACTIVITY</span><strong class="spark-total">+12 <small>this week</small></strong><svg class="sparkline" viewBox="0 0 118 34" preserveAspectRatio="none" aria-label="Scan activity trend"><defs><linearGradient id="sparkGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b66cff" stop-opacity=".34"/><stop offset="1" stop-color="#b66cff" stop-opacity="0"/></linearGradient></defs><path class="spark-fill" d="M0 27 16 21 32 24 48 10 64 18 80 13 96 16 118 3V34H0Z"/><path class="spark-stroke" d="M0 27 16 21 32 24 48 10 64 18 80 13 96 16 118 3"/></svg></div>
+          </div>
+        </section>
+
+        <section class="panel pr-panel" id="pull-requests">
+          <div class="panel-header">
+            <div class="panel-title-block"><div class="panel-heading-line"><h2>Pull request analysis</h2><span class="count-pill">05</span></div><p>Review documentation changes alongside incoming code.</p></div>
+            <button class="text-button" id="viewAllButton">View all <svg class="icon tiny"><use href="#i-chevron-right"/></svg></button>
+          </div>
+          <div class="table-toolbar">
+            <label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="prSearch" type="search" placeholder="Search pull requests..." aria-label="Search pull requests"><kbd>/</kbd></label>
+            <div class="filter-group" role="group" aria-label="Filter pull requests by status">
+              <button class="filter-chip active" data-filter="all">All <span>5</span></button>
+              <button class="filter-chip" data-filter="warning"><i class="filter-dot warning-dot"></i>Review</button>
+              <button class="filter-chip" data-filter="failed"><i class="filter-dot failed-dot"></i>Blocked</button>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="pr-table">
+              <thead><tr><th>Pull request</th><th>Author</th><th>Status</th><th>Detected issues</th><th><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody id="prTableBody"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" hidden><span class="empty-icon"><svg class="icon"><use href="#i-search"/></svg></span><strong>No pull requests found</strong><span>Try a different search or status filter.</span></div>
+          </div>
+          <div class="table-footer"><span>Showing <b id="resultCount">5</b> of 5 pull requests</span><span class="demo-caption"><span></span>Sample data</span></div>
+        </section>
+
+        <div class="lower-grid">
+          <section class="panel drift-panel" id="drift-details">
+            <div class="panel-header compact-header">
+              <div class="panel-title-block"><div class="panel-heading-line"><span class="detail-icon"><svg class="icon"><use href="#i-alert"/></svg></span><h2>Drift detail</h2></div><p id="selectedPrLabel">Selected finding from #244</p></div>
+              <span class="severity-pill high"><i></i><span id="severityText">HIGH SEVERITY</span></span>
+            </div>
+            <div class="potential-callout"><span class="callout-indicator"></span><span><b>Potential mismatch</b> <span>— review before merging</span></span><button class="info-button" title="This finding is a suggestion from demo analysis">i</button></div>
+            <div class="file-pair">
+              <div class="file-entry"><span class="file-icon source"><svg class="icon"><use href="#i-file"/></svg></span><div><span class="file-label">CHANGED SOURCE</span><strong id="sourceFile">config.js</strong></div><button class="icon-button" data-modal="code" aria-label="View code changes"><svg class="icon tiny"><use href="#i-external"/></svg></button></div>
+              <div class="file-entry"><span class="file-icon docs"><svg class="icon"><use href="#i-book"/></svg></span><div><span class="file-label">RELATED DOCUMENTATION</span><strong id="docFile">README.md</strong></div><button class="icon-button" data-modal="evidence" aria-label="View documentation evidence"><svg class="icon tiny"><use href="#i-external"/></svg></button></div>
+            </div>
+            <div class="statement-block">
+              <div class="statement-head"><span>OUTDATED STATEMENT</span><button class="copy-button" id="copyStatement" title="Copy statement">COPY</button></div>
+              <blockquote id="outdatedStatement">“Default timeout is 60 seconds.”</blockquote>
+            </div>
+            <div class="value-compare">
+              <div><span class="file-label">CODE NOW SAYS</span><code class="new-value" id="newValue">timeout = 30</code></div>
+              <span class="compare-arrow">→</span>
+              <div><span class="file-label">DOCS STILL SAY</span><code class="old-value" id="oldValue">60 seconds</code></div>
+            </div>
+            <div class="suggestion"><span class="suggestion-mark"><svg class="icon tiny"><use href="#i-spark"/></svg></span>            <div><span class="file-label">SUGGESTED CORRECTION</span><p id="suggestedCorrection">“Default timeout is 30 seconds.”</p></div><button class="copy-suggestion" id="copySuggestion" title="Copy suggested correction"><svg class="icon tiny"><use href="#i-file"/></svg></button></div>
+          </section>
+
+          <section class="panel chart-panel" id="history">
+            <div class="panel-header compact-header">
+              <div class="panel-title-block"><div class="panel-heading-line"><h2>Documentation drift</h2><span class="chart-live-dot"></span></div><p>Detected mismatches over time</p></div>
+              <button class="period-button">Last 7 days <svg class="icon tiny"><use href="#i-chevron"/></svg></button>
+            </div>
+            <div class="chart-summary"><strong>12</strong><span>findings detected</span><span class="chart-change">+3 <small>vs. prior week</small></span></div>
+            <div class="chart-wrap"><div class="chart-y-labels"><span>8</span><span>6</span><span>4</span><span>2</span><span>0</span></div><canvas id="driftChart" role="img" aria-label="Area chart showing documentation mismatches over seven days"></canvas><div class="chart-tooltip" id="chartTooltip" hidden></div></div>
+            <div class="chart-x-labels"><span>Nov 12</span><span>Nov 13</span><span>Nov 14</span><span>Nov 15</span><span>Nov 16</span><span>Nov 17</span><span>Nov 18</span></div>
+            <div class="chart-legend"><span><i></i>Documentation mismatches</span><span class="chart-demo-note">Illustrative demo activity</span></div>
+            <div class="chart-footer"><svg class="icon tiny"><use href="#i-spark"/></svg>Peak activity on <b>Nov 17</b><span>·</span> 7 findings</div>
+          </section>
+        </div>
+      </section>
+    </div>
+    <footer class="page-footer"><span><span class="footer-mark">◈</span> TRACE LENS <span class="footer-separator">/</span> <span>Documentation that stays in sync.</span></span><span>DEMO ENVIRONMENT · No live repository data</span></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-check"><svg class="icon tiny"><use href="#i-check"/></svg></span><span id="toastMessage">Copied to clipboard</span></div>
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><span class="modal-eyebrow" id="modalEyebrow">PULL REQUEST #248</span><h2 id="modalTitle">Code change preview</h2></div><button class="modal-close" id="modalClose" aria-label="Close dialog"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-footer"><span><span class="demo-caption"><span></span>Illustrative demo evidence</span></span><button class="button button-secondary" id="modalDone">Done</button></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
