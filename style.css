@@ -519,7 +519,7 @@ h1 { font-family: var(--display); font-size: 23px; letter-spacing: -.5px; font-w
 @media (min-width: 821px) and (max-width: 1100px) {
   .topbar .nav-link { gap: 4px; padding-right: 4px; padding-left: 4px; font-size: 9px; }
 }
-@media (min-width: 821px) and (max-width: 980px) {
+@media (min-width: 821px) and (max-width: 1000px) {
   .topbar { height: 60px; padding: 0 20px; }
   .topbar > .topbar-divider, .topbar-right .topbar-divider, .last-scan { display: none; }
   .repo-picker, .analysis-page .analysis-repo-link { max-width: 220px; }
