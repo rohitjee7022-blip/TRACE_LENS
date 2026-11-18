@@ -419,7 +419,9 @@ document.addEventListener("keydown", (event) => {
     document.getElementById("repoMenu").hidden = true;
     document.getElementById("repoPicker").setAttribute("aria-expanded", "false");
     document.getElementById("mainNav").classList.remove("open");
-    document.getElementById("mobileMenuBtn").setAttribute("aria-expanded", "false");
+    const mobileMenuButton = document.getElementById("mobileMenuBtn");
+    mobileMenuButton.setAttribute("aria-expanded", "false");
+    mobileMenuButton.setAttribute("aria-label", "Open navigation");
   }
   if (event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
     event.preventDefault();
@@ -438,7 +440,9 @@ document.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => {
     document.querySelectorAll(".nav-link").forEach((navLink) => navLink.classList.toggle("active", navLink === link));
     document.getElementById("mainNav").classList.remove("open");
-    document.getElementById("mobileMenuBtn").setAttribute("aria-expanded", "false");
+    const mobileMenuButton = document.getElementById("mobileMenuBtn");
+    mobileMenuButton.setAttribute("aria-expanded", "false");
+    mobileMenuButton.setAttribute("aria-label", "Open navigation");
   });
 });
 document.getElementById("mobileMenuBtn").addEventListener("click", (event) => {
@@ -446,6 +450,7 @@ document.getElementById("mobileMenuBtn").addEventListener("click", (event) => {
   const open = !menu.classList.contains("open");
   menu.classList.toggle("open", open);
   event.currentTarget.setAttribute("aria-expanded", String(open));
+  event.currentTarget.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 });
 
 uploadDropzone.addEventListener("click", () => documentInput.click());
