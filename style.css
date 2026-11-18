@@ -439,7 +439,6 @@ h1 { font-family: var(--display); font-size: 23px; letter-spacing: -.5px; font-w
 
 /* Analysis Results */
 .analysis-nav-link { white-space: nowrap; }
-.analysis-page { min-width: 320px; }
 .analysis-repo-link { min-width: 0; display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; color: #c9c0d4; background: rgba(255,255,255,.025); font-size: 10px; white-space: nowrap; }
 .analysis-repo-link strong { color: #f4edfc; font-weight: 600; }
 .analysis-shell { max-width: 1250px; }
@@ -524,7 +523,7 @@ h1 { font-family: var(--display); font-size: 23px; letter-spacing: -.5px; font-w
 @media (min-width: 821px) and (max-width: 1100px) {
   .topbar .nav-link { gap: 4px; padding-right: 4px; padding-left: 4px; font-size: 9px; }
 }
-@media (min-width: 821px) and (max-width: 1000px) {
+@media (min-width: 821px) and (max-width: 1024px) {
   .topbar { height: 60px; padding: 0 20px; }
   .topbar > .topbar-divider, .topbar-right .topbar-divider, .last-scan { display: none; }
   .repo-picker, .analysis-page .analysis-repo-link { max-width: 220px; }
