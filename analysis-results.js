@@ -175,25 +175,36 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2300);
 }
 
-async function copySuggestion(finding) {
+function copyWithFallback(text) {
+  const field = document.createElement("textarea");
+  field.value = text;
+  field.style.position = "fixed";
+  field.style.opacity = "0";
+  document.body.appendChild(field);
   try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(finding.suggestion);
-    } else {
-      const field = document.createElement("textarea");
-      field.value = finding.suggestion;
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      const copied = document.execCommand("copy");
-      field.remove();
-      if (!copied) throw new Error("Clipboard copy was not available");
-    }
-    showToast("Suggested documentation fix copied");
+    field.select();
+    return document.execCommand("copy");
   } catch (error) {
-    showToast("Copy unavailable in this browser");
+    return false;
+  } finally {
+    field.remove();
   }
+}
+
+async function copySuggestion(finding) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(finding.suggestion);
+      showToast("Suggested documentation fix copied");
+      return;
+    } catch (error) {
+      // Fall back when clipboard permission or browser support prevents the write.
+    }
+  }
+
+  showToast(copyWithFallback(finding.suggestion)
+    ? "Suggested documentation fix copied"
+    : "Copy unavailable in this browser");
 }
 
 function fieldMarkup(label, value, code) {
