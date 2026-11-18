@@ -121,15 +121,31 @@ function cancelUpload() {
   setUploadProgress(0, "Ready to upload");
 }
 
+function clearSelectedDocument() {
+  selectedDocument = null;
+  documentInput.value = "";
+  cancelUpload();
+  uploadFileCard.hidden = true;
+  document.getElementById("uploadFileName").textContent = "";
+  document.getElementById("uploadFileMeta").textContent = "";
+  document.getElementById("uploadFileIcon").textContent = "";
+}
+
 function showUploadError(message) {
   uploadError.textContent = message;
   uploadError.hidden = !message;
 }
 
+function rejectDocument(message) {
+  const hadSelection = Boolean(selectedDocument);
+  clearSelectedDocument();
+  showUploadError(hadSelection ? `${message} The previous selection was cleared.` : message);
+}
+
 function selectDocument(file) {
   const validationError = documentValidationError(file);
   if (validationError) {
-    showUploadError(validationError);
+    rejectDocument(validationError);
     return;
   }
 
@@ -146,7 +162,7 @@ function selectDocument(file) {
 
 function handleDocumentSelection(files) {
   if (files.length > 1) {
-    showUploadError("Choose one document at a time.");
+    rejectDocument("Choose one document at a time.");
     return;
   }
   if (files.length === 1) selectDocument(files[0]);
@@ -454,10 +470,7 @@ document.getElementById("replaceDocument").addEventListener("click", () => {
   documentInput.click();
 });
 document.getElementById("removeDocument").addEventListener("click", () => {
-  cancelUpload();
-  selectedDocument = null;
-  documentInput.value = "";
-  uploadFileCard.hidden = true;
+  clearSelectedDocument();
   uploadButton.disabled = true;
   showUploadError("");
 });
