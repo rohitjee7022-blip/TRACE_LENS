@@ -92,6 +92,8 @@ const searchInput = document.getElementById("findingSearch");
 const severityFilter = document.getElementById("severityFilter");
 const statusFilter = document.getElementById("statusFilter");
 const emptyState = document.getElementById("emptyState");
+const loadingState = document.getElementById("loadingState");
+const errorState = document.getElementById("errorState");
 const resultsCount = document.getElementById("resultsCount");
 const findingCount = document.getElementById("findingCount");
 const modalBackdrop = document.getElementById("findingModalBackdrop");
@@ -99,6 +101,7 @@ const modal = modalBackdrop.querySelector('[role="dialog"]');
 const toast = document.getElementById("resultsToast");
 let toastTimer;
 let modalOpener;
+let loaded = false;
 
 function escapeHtml(value) {
   return value.replace(/[&<>"']/g, (character) => ({
@@ -121,6 +124,8 @@ function updateSummary() {
 }
 
 function renderFindings() {
+  if (!loaded) return;
+
   const query = searchInput.value.trim().toLowerCase();
   const severity = severityFilter.value;
   const status = statusFilter.value;
@@ -256,6 +261,27 @@ function clearFilters() {
   searchInput.focus();
 }
 
+function loadAnalysis() {
+  loaded = false;
+  loadingState.hidden = false;
+  errorState.hidden = true;
+  resultsCount.hidden = true;
+  findingsList.hidden = true;
+  emptyState.hidden = true;
+
+  window.setTimeout(() => {
+    if (new URLSearchParams(window.location.search).get("analysisError") === "1") {
+      loadingState.hidden = true;
+      errorState.hidden = false;
+      return;
+    }
+
+    loaded = true;
+    loadingState.hidden = true;
+    renderFindings();
+  }, 400);
+}
+
 findingsList.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-action]");
   if (!button) return;
@@ -271,6 +297,12 @@ searchInput.addEventListener("input", renderFindings);
 severityFilter.addEventListener("change", renderFindings);
 statusFilter.addEventListener("change", renderFindings);
 document.getElementById("clearFilters").addEventListener("click", clearFilters);
+document.getElementById("retryAnalysis").addEventListener("click", () => {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("analysisError");
+  window.history.replaceState({}, "", url);
+  loadAnalysis();
+});
 document.getElementById("closeFindingModal").addEventListener("click", closeFindingModal);
 document.getElementById("doneFindingModal").addEventListener("click", closeFindingModal);
 modalBackdrop.addEventListener("click", (event) => {
@@ -283,6 +315,7 @@ document.addEventListener("keydown", (event) => {
     const navigation = document.getElementById("resultsNavigation");
     navigation.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation");
   }
 
   if (event.key === "Tab" && !modalBackdrop.hidden) {
@@ -302,7 +335,9 @@ document.addEventListener("keydown", (event) => {
 document.querySelectorAll("#resultsNavigation .nav-link").forEach((link) => {
   link.addEventListener("click", () => {
     document.getElementById("resultsNavigation").classList.remove("open");
-    document.getElementById("resultsMenuButton").setAttribute("aria-expanded", "false");
+    const menuButton = document.getElementById("resultsMenuButton");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Open navigation");
   });
 });
 document.getElementById("resultsMenuButton").addEventListener("click", (event) => {
@@ -310,6 +345,7 @@ document.getElementById("resultsMenuButton").addEventListener("click", (event) =
   const open = !navigation.classList.contains("open");
   navigation.classList.toggle("open", open);
   event.currentTarget.setAttribute("aria-expanded", String(open));
+  event.currentTarget.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 });
 
-renderFindings();
+loadAnalysis();

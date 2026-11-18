@@ -49,8 +49,6 @@
     </nav>
     <div class="topbar-right">
       <div class="connection"><span class="connection-dot"></span><span>GitHub <b>demo</b></span></div>
-      <span class="topbar-divider slim"></span>
-      <a class="analysis-return-link" href="index.html#overview">Back to dashboard</a>
     </div>
   </header>
 
@@ -126,8 +124,18 @@
           </label>
         </div>
       </div>
-      <p class="analysis-results-count" id="resultsCount" role="status" aria-live="polite"></p>
-      <div class="analysis-results-list" id="findingsList" aria-live="polite"></div>
+      <div class="analysis-state" id="loadingState" role="status" aria-live="polite">
+        <span class="analysis-spinner" aria-hidden="true"></span>
+        <strong>Loading analysis results...</strong>
+      </div>
+      <div class="analysis-state analysis-error" id="errorState" role="alert" hidden>
+        <span class="analysis-error-icon" aria-hidden="true">!</span>
+        <strong>Unable to load analysis results</strong>
+        <span>Please try again. Your sample findings are unchanged.</span>
+        <button class="button button-secondary" id="retryAnalysis" type="button">Retry</button>
+      </div>
+      <p class="analysis-results-count" id="resultsCount" role="status" aria-live="polite" hidden></p>
+      <div class="analysis-results-list" id="findingsList" aria-live="polite" hidden></div>
       <div class="analysis-empty-state" id="emptyState" role="status" hidden>
         <span class="analysis-empty-icon"><svg class="icon"><use href="#i-search"/></svg></span>
         <strong>No findings match your filters</strong>
