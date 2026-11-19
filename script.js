@@ -398,10 +398,10 @@ document.getElementById("scanButton").addEventListener("click", (event) => {
   scanTimer = window.setTimeout(() => {
     button.disabled = false;
     button.classList.remove("loading");
-    button.querySelector("span").textContent = "Run demo scan";
+    button.querySelector("span").textContent = "Try a sample scan";
     document.getElementById("lastScanTime").textContent = "Just now";
     document.getElementById("activityScanTime").textContent = "just now";
-    showToast("Demo scan complete · 7 findings to review");
+    showToast("Sample scan complete · 7 example findings to review");
   }, 1450);
 });
 
