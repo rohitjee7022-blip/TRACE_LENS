@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090611">
-  <meta name="description" content="TRACE LENS documentation drift dashboard demo">
-  <title>TRACE LENS — Repository overview</title>
+  <meta name="description" content="TRACE LENS compares pull request code changes with project documentation and highlights potential mismatches for developer review.">
+  <title>TRACE LENS — Keep project docs aligned with code</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -78,18 +78,18 @@
   <main class="app-shell" id="overview">
     <div class="page-heading">
       <div>
-        <div class="breadcrumb"><span>WORKSPACE</span><svg class="icon tiny"><use href="#i-chevron-right"/></svg><span>REPOSITORY OVERVIEW</span></div>
+        <div class="breadcrumb"><span>WORKSPACE</span><svg class="icon tiny"><use href="#i-chevron-right"/></svg><span>CODE &amp; DOCS REVIEW</span></div>
         <div class="heading-row">
           <div>
-            <h1>Repository overview</h1>
-            <p class="page-subtitle">A clear view of where your docs drift from your code.</p>
+            <h1>Catch outdated docs before merge.</h1>
+            <p class="page-subtitle">TRACE LENS compares changed code with project documentation and flags possible mismatches for your review.</p>
           </div>
           <span class="demo-pill"><span></span> DEMO DATA</span>
         </div>
       </div>
       <div class="heading-actions">
         <span class="scan-label"><span class="scan-pulse"></span>Demo environment</span>
-        <button class="button button-primary" id="scanButton"><svg class="icon"><use href="#i-scan"/></svg><span>Run demo scan</span></button>
+        <button class="button button-primary" id="scanButton"><svg class="icon"><use href="#i-scan"/></svg><span>Try a sample scan</span></button>
       </div>
     </div>
 
@@ -122,7 +122,7 @@
           <div class="metric-value"><strong>03</strong><span class="metric-context">this week</span></div>
           <div class="metric-foot"><span>Potential documentation mismatches</span><span class="metric-foot-icon red-text">!</span></div>
         </article>
-        <div class="rules-note"><span class="rules-note-icon"><svg class="icon tiny"><use href="#i-spark"/></svg></span><span><b>18 rules in play</b><br>Covering API values, config &amp; setup guides</span><svg class="icon tiny rules-arrow"><use href="#i-chevron-right"/></svg></div>
+        <div class="rules-note"><span class="rules-note-icon"><svg class="icon tiny"><use href="#i-spark"/></svg></span><span><b>Spot drift where it matters</b><br>API values, configuration &amp; setup guidance</span><svg class="icon tiny rules-arrow"><use href="#i-chevron-right"/></svg></div>
       </aside>
 
       <section class="main-column" aria-label="Repository analysis">
@@ -168,7 +168,7 @@
         <section class="panel repo-activity">
           <div class="repo-identity">
             <span class="github-tile"><svg class="icon"><use href="#i-github"/></svg></span>
-            <div><div class="repo-title-row"><h2 id="activityRepo">demo-project</h2><span class="private-tag">PRIVATE</span></div><p>trace-lens / <span>Documentation drift monitoring</span></p></div>
+            <div><div class="repo-title-row"><h2 id="activityRepo">demo-project</h2><span class="private-tag">PRIVATE</span></div><p>trace-lens / <span>Pull request documentation review</span></p></div>
           </div>
           <div class="repo-health">
             <span class="activity-dot"></span><span>Demo repository</span><span class="repo-meta-divider"></span><svg class="icon tiny"><use href="#i-clock"/></svg><span>Scanned <b id="activityScanTime">today at 10:42 AM</b></span>
@@ -183,7 +183,7 @@
 
         <section class="panel pr-panel" id="pull-requests">
           <div class="panel-header">
-            <div class="panel-title-block"><div class="panel-heading-line"><h2>Pull request analysis</h2><span class="count-pill">05</span></div><p>Review documentation changes alongside incoming code.</p></div>
+            <div class="panel-title-block"><div class="panel-heading-line"><h2>Pull request analysis</h2><span class="count-pill">05</span></div><p>How it works: compare changed code with related docs, then review flagged mismatches.</p></div>
             <button class="text-button" id="viewAllButton">View all <svg class="icon tiny"><use href="#i-chevron-right"/></svg></button>
           </div>
           <div class="table-toolbar">
@@ -207,7 +207,7 @@
         <div class="lower-grid">
           <section class="panel drift-panel" id="drift-details">
             <div class="panel-header compact-header">
-              <div class="panel-title-block"><div class="panel-heading-line"><span class="detail-icon"><svg class="icon"><use href="#i-alert"/></svg></span><h2>Drift detail</h2></div><p id="selectedPrLabel">Selected finding from #244</p></div>
+              <div class="panel-title-block"><div class="panel-heading-line"><span class="detail-icon"><svg class="icon"><use href="#i-alert"/></svg></span><h2>Example: code changed, docs didn't</h2></div><p id="selectedPrLabel">Selected finding from #244</p></div>
               <span class="severity-pill high"><i></i><span id="severityText">HIGH SEVERITY</span></span>
             </div>
             <div class="potential-callout"><span class="callout-indicator"></span><span><b>Potential mismatch</b> <span>— review before merging</span></span><button class="info-button" title="This finding is a suggestion from demo analysis">i</button></div>
@@ -241,7 +241,7 @@
         </div>
       </section>
     </div>
-    <footer class="page-footer"><span><span class="footer-mark">◈</span> TRACE LENS <span class="footer-separator">/</span> <span>Documentation that stays in sync.</span></span><span>DEMO ENVIRONMENT · No live repository data</span></footer>
+    <footer class="page-footer"><span><span class="footer-mark">◈</span> TRACE LENS <span class="footer-separator">/</span> <span>Try a sample scan to see code and docs compared side by side.</span></span><span>DEMO ENVIRONMENT · No live repository data</span></footer>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-check"><svg class="icon tiny"><use href="#i-check"/></svg></span><span id="toastMessage">Copied to clipboard</span></div>
